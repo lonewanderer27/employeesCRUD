@@ -4,11 +4,11 @@ global $cn;
 
 if (isset($_GET['token'])) {
     $id = $_GET['token'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $jobTitle = $_POST['jobTitle'];
+    $fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+    $jobTitle = trim($_POST['jobTitle']);
 
     // check first if the updated values conflict with someone else's record
     $sql2 = "SELECT * FROM employees WHERE EmployeeFN = '$fname' AND EmployeeLN = '$lname' AND EmployeeID != $id";
@@ -16,7 +16,7 @@ if (isset($_GET['token'])) {
 
     if ($rs2->num_rows != 0) {
         // a duplicate record has been found! do not proceed
-        header("location:index.php?conflictError=true&fname=$fname&lname=$lname&email=$email&phone=$phone&jobTitle=$jobTitle");
+        header("location:index.php?conflictError=true");
         return;
     }
 

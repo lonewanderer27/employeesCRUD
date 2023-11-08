@@ -6,7 +6,7 @@ $(document).ready(() => {
     const queriesToRemove = [
         "add", "update", "delete",
         "success",
-        "duplicate", "addError", "updateError",
+        "duplicate", "addError", "updateError", "conflictError",
         "fname", "lname", "email", "phone", "jobTitle"
     ];
 

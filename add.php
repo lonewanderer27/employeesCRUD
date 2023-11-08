@@ -4,11 +4,11 @@ global $cn, $fname, $lname, $email, $phone, $jobTitle;
 $date_now = date("Y-m-d");
 
 if (isset($_POST['fname'])) {
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $jobTitle = $_POST['jobTitle'];
+    $fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+    $jobTitle = trim($_POST['jobTitle']);
 
     // find duplicates first
     $sql = "SELECT EmployeeID FROM employees WHERE EmployeeFN = '$fname' AND EmployeeLN = '$lname'";
