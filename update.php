@@ -10,6 +10,16 @@ if (isset($_GET['token'])) {
     $phone = $_POST['phone'];
     $jobTitle = $_POST['jobTitle'];
 
+    // check first if the updated values conflict with someone else's record
+    $sql2 = "SELECT * FROM employees WHERE EmployeeFN = '$fname' AND EmployeeLN = '$lname' AND EmployeeID != $id";
+    $rs2 = $cn->query($sql2);
+
+    if ($rs2->num_rows != 0) {
+        // a duplicate record has been found! do not proceed
+        header("location:index.php?conflictError=true&fname=$fname&lname=$lname&email=$email&phone=$phone&jobTitle=$jobTitle");
+        return;
+    }
+
     $sql = "UPDATE employees SET EmployeeFN = '$fname', EmployeeLN = '$lname', Employeeemail = '$email', Employeephone = '$phone', JobTitle = '$jobTitle'
                 WHERE EmployeeID = $id";
     $rs = $cn->query($sql);

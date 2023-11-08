@@ -6,6 +6,11 @@ global $cn;
         A record already exists!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+<?php elseif (isset($_GET['conflictError'])): ?>
+    <div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+        Conflicting record!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 <?php elseif (isset($_GET['missingToken'])): ?>
     <div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
         Token is missing! Are you on the wrong page?
