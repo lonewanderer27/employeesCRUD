@@ -1,15 +1,24 @@
 -- CREATE EMPLOYEES TABLE
 CREATE TABLE `employees`
 (
-    `EmployeeID`    INT NOT NULL,
-    `EmployeeFN`    TEXT DEFAULT NULL,
-    `EmployeeLN`    TEXT DEFAULT NULL,
-    `EmployeeEmail` TEXT DEFAULT NULL,
-    `EmployeePhone` TEXT DEFAULT NULL,
-    `HireDate`      DATE DEFAULT NULL,
-    `ManagerID`     int  DEFAULT NULL,
-    `JobTitle`      TEXT DEFAULT NULL
+    `EmployeeID`    INT AUTO_INCREMENT PRIMARY KEY,
+    `EmployeeFN`    TEXT,
+    `EmployeeLN`    TEXT,
+    `EmployeeEmail` TEXT,
+    `EmployeePhone` TEXT,
+    `HireDate`      TEXT,
+    `ManagerID`     INT,
+    `JobTitle`      TEXT
 );
+
+-- CREATE USER WITH SUPERUSER PERMISSIONS TO INSERT DATA ON ALL TABLES
+CREATE USER 'seed'@'%' IDENTIFIED BY 'seed';
+
+-- Grant superuser permissions (all privileges) for the 'employees' database to the 'seed' user
+GRANT ALL PRIVILEGES ON employees.* TO 'seed'@'%';
+
+-- Optionally, you can also flush privileges to apply the changes immediately
+FLUSH PRIVILEGES;
 
 -- INSERT EMPLOYEES
 INSERT INTO `employees` (`EmployeeID`, `EmployeeFN`, `EmployeeLN`, `EmployeeEmail`, `EmployeePhone`, `HireDate`,
