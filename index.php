@@ -11,6 +11,10 @@ $phone = $_GET['phone'] ?? '';
 $jobTitle = $_GET['jobTitle'] ?? '';
 $action = '';
 
+// fetch available job titles
+$sqlj = "SELECT DISTINCT(JobTitle) FROM employees";
+$jobTitles = $cn->query($sqlj);
+
 // if token is there, we're on update mode!
 if (isset($id)) {
     // set the action attribute for form
@@ -53,14 +57,22 @@ if (isset($id)) {
     <?php include('components/alert.php') ?>
     <form action="<?= $action ?>" method="POST" class="d-flex my-4">
         <div class="d-flex">
-            <input type="text" name="fname" placeholder="Enter First Name" value="<?php echo $fname ?>" required
+            <input type="text" name="fname" placeholder="Enter First Name" value="<?= $fname ?>" required
                    class="form-control me-2">
-            <input type="text" name="lname" placeholder="Enter Last Name" value="<?php echo $lname ?>" required
+            <input type="text" name="lname" placeholder="Enter Last Name" value="<?= $lname ?>" required
                    class="form-control me-2">
-            <input type="email" name="email" placeholder="Enter Email" value="<?php echo $email ?>" required
+            <input type="email" name="email" placeholder="Enter Email" value="<?= $email ?>" required
                    class="form-control me-2">
-            <input type="text" name="jobTitle" placeholder="Enter Job Title" value="<?php echo $jobTitle ?>" required
-                   class="form-control me-2">
+            <select type="text" name="jobTitle" required
+                    class="form-select me-2">
+                <?php while ($rowj = $jobTitles->fetch_assoc()): ?>
+                    <option
+                            value="<?= $rowj['JobTitle'] ?>"
+                    <?= ($jobTitle == $rowj['JobTitle']) ? 'selected' : '' ?>>
+                        <?= $rowj['JobTitle'] ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
             <input type="text" name="phone" placeholder="Enter Contact No" value="<?php echo $phone ?>" required
                    class="form-control me-2"><br/>
         </div>
