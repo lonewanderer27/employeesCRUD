@@ -10,7 +10,7 @@ $rs = $cn->query($sql);
         <table id="employeeList" class="table table-bordered table-hover table-striped">
             <thead>
             <tr>
-                <th>No</th>
+                <th>EmpID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Job Title</th>
@@ -31,7 +31,7 @@ $rs = $cn->query($sql);
                     <td><?= $row['HireDate'] ?></td>
                     <td class="d-grid gap-2">
                         <a class="btn btn-warning" href="?token=<?php echo $row['EmployeeID'] ?>">Update</a>
-                        <a class="btn btn-danger" href="delete.php?token=<?php echo $row['EmployeeID'] ?>">Delete</a>
+                        <a class="btn btn-danger" href="../delete.php?token=<?php echo $row['EmployeeID'] ?>">Delete</a>
                     </td>
                 </tr>
             <?php endwhile ?>
