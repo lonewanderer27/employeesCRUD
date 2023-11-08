@@ -16,7 +16,6 @@ $rs = $cn->query($sql);
                 <th>Job Title</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Hire Date</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -28,9 +27,8 @@ $rs = $cn->query($sql);
                     <td><?= $row['JobTitle'] ?></td>
                     <td><?= $row['EmployeeEmail'] ?></td>
                     <td><?= $row['EmployeePhone'] ?></td>
-                    <td><?= $row['HireDate'] ?></td>
-                    <td class="d-grid gap-2">
-                        <a class="btn btn-warning" href="?token=<?php echo $row['EmployeeID'] ?>">Update</a>
+                    <td class="d-flex gap-2">
+                        <a class="btn btn-warning" href="?token=<?php echo $row['EmployeeID'] ?>">Edit</a>
                         <a class="btn btn-danger" href="../delete.php?token=<?php echo $row['EmployeeID'] ?>">Delete</a>
                     </td>
                 </tr>

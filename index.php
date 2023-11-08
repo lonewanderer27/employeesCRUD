@@ -73,7 +73,7 @@ if (isset($id)) {
                     </option>
                 <?php endwhile; ?>
             </select>
-            <input type="text" name="phone" placeholder="Enter Contact No" value="<?php echo $phone ?>" required
+            <input type="text" name="phone" placeholder="Enter Contact No" value="<?= $phone ?>" required
                    class="form-control me-2"><br/>
         </div>
         <div class="d-flex flex-column justify-content-center">
