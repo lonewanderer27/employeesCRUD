@@ -76,10 +76,15 @@ if (isset($id)) {
             <input type="text" name="phone" placeholder="Enter Contact No" value="<?= $phone ?>" required
                    class="form-control me-2"><br/>
         </div>
-        <div class="d-flex flex-column justify-content-center">
-            <button class="btn <?= (isset($id)) ? 'btn-warning' : 'btn-primary' ?>">
+        <div class="d-flex justify-content-center">
+            <button class="btn me-2 <?= (isset($id)) ? 'btn-warning' : 'btn-primary' ?>">
                 <?= (isset($id)) ? 'UPDATE' : 'SAVE' ?>
             </button>
+            <?php if(isset($id)): ?>
+                <a class="btn btn-primary me-2" href="/index.php">
+                    BACK
+                </a>
+            <?php endif; ?>
         </div>
     </form>
 </div>
