@@ -5,6 +5,10 @@
     }
   },
   "rewrites": [
+    { "source": "/index.php", "destination": "/../index.php" },
+    { "source": "/add.php", "destination": "/../add.php" },
+    { "source": "/update.php", "destination": "/../update.php" },
+    { "source": "/delete.php", "destination": "/../delete.php" },
     { "source": "/(.*)", "destination": "/api/index.php" }
   ]
 }
