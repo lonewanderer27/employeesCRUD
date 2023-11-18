@@ -7,11 +7,11 @@ if (file_exists('.env')) {
     $dotenv->load();
 }
 
-$user = $_ENV['DB_USER'];
-$pass = $_ENV['DB_PASS'];
-$hostname = $_ENV['DB_HOST'];
-$db = $_ENV['DB_NAME'];
-$port = $_ENV['DB_PORT'];
+$user = getenv('DB_USER') ?: 'seed';
+$pass = getenv('DB_PASS') ?: 'seed';
+$hostname = getenv('DB_HOST') ?: 'database';
+$db = getenv('DB_NAME') ?: 'employees';
+$port = getenv('DB_PORT') ?: 3306;
 
 $cn = new mysqli($hostname, $user, $pass, $db, $port);
 if ($cn->connect_error) {
