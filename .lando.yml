@@ -3,6 +3,9 @@ recipe: lamp
 services:
   phpmyadmin:
     type: phpmyadmin
+  appserver:
+    type: php
+    composer: true
 config:
   database: mysql
   webroot: .
