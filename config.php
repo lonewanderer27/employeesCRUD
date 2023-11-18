@@ -1,9 +1,11 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-// load environment variables
+// Load environment variables from .env if it exists
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+if (file_exists('.env')) {
+    $dotenv->load();
+}
 
 $user = $_ENV['DB_USER'];
 $pass = $_ENV['DB_PASS'];
